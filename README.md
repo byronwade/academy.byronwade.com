@@ -78,6 +78,22 @@ Join us today and start your journey to becoming a skilled contractor. With affo
 -   Construction management
 -   Advanced building codes
 
+## Owners:
+
+### Safety:
+
+-   Implementing and maintaining effective safety protocols for large-scale construction projects
+
+### Tools:
+
+-   Implementing and maintaining effective safety protocols for large-scale construction projects
+
+### Course Curriculum:
+
+-   Effective leadership strategies for construction projects
+-   Business management for construction owners
+-   Understanding financial management and budgeting for construction projects.
+
 # Database
 
 ## Users Collection
