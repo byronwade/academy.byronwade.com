@@ -6,6 +6,10 @@ We understand the importance of accessibility and flexibility, which is why our 
 
 Join us today and start your journey to becoming a skilled contractor. With affordable prices and a focus on youth education, we are dedicated to providing accessible and quality education to all.
 
+# Vision
+
+We want a website similar to Khan Academy where we would be an online learning platform that offers video lessons, interactive quizzes and exercises, and educational games. The website should have a clean and simple user interface with a navigation menu that is easy to use. The courses should be well-structured and organized into categories, making it easy for students to find the subjects they want to learn. The website should also have a tracking system to allow students to monitor their progress and receive feedback on their performance. Additionally, the website should have an easy-to-use discussion forum where students can engage with other students and instructors, ask questions, and receive support.
+
 # Structure
 
 ## High School Students:
