@@ -1,38 +1,141 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Introducing the Ultimate Online Construction Academy
 
-## Getting Started
+Our platform provides comprehensive and engaging video courses for contractors and aspiring contractors, covering all aspects of construction from framing to plumbing, and everything in between. With a focus on interactive and engaging learning, our courses include quizzes, interactive games, and online books to make the learning experience enjoyable and effective.
 
-First, run the development server:
+We understand the importance of accessibility and flexibility, which is why our courses are designed to be flexible and convenient, allowing students to learn at their own pace from anywhere. And, with a NoSQL database, we are able to store and manage large amounts of data, including building codes for each state, county, and city, ensuring that our courses are up-to-date and in compliance with all regulations.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Join us today and start your journey to becoming a skilled contractor. With affordable prices and a focus on youth education, we are dedicated to providing accessible and quality education to all.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## High School Students:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Safety:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+-   Introduction to construction safety
+-   Common hazards and safety equipment
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Tools:
 
-## Learn More
+-   Overview of common tools used in construction
+-   Uses and proper handling
 
-To learn more about Next.js, take a look at the following resources:
+### Course Curriculum:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   Introduction to different types of construction
+-   Basic building techniques and project management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Apprentices:
 
-## Deploy on Vercel
+### Safety:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+-   Advanced construction safety
+-   Identifying and mitigating hazards
+-   Personal protective equipment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Tools:
+
+-   Advanced tool use
+-   Maintenance and storage
+
+### Course Curriculum:
+
+-   Hands-on techniques and practical applications
+-   Skill-building exercises
+-   Real-world scenarios
+
+## Journeyman:
+
+### Safety:
+
+-   Specialized safety techniques and equipment for specific trades
+-   Plumbing, electrical, and HVAC
+
+### Tools:
+
+-   Specialized tools and equipment for specific trades
+-   Uses and proper maintenance
+
+### Course Curriculum:
+
+-   Advanced techniques and practices for specific trades
+-   Building codes
+-   Problem-solving exercises
+
+## Masters:
+
+### Safety:
+
+-   Best practices for managing safety in complex construction projects
+
+### Tools:
+
+-   Emerging tools and technologies in the construction industry
+
+### Course Curriculum:
+
+-   Specialized areas such as green building
+-   Construction management
+-   Advanced building codes
+
+# Database
+
+## Users Collection
+
+-   name
+-   email
+-   password
+-   other relevant information
+
+## Courses Collection
+
+-   course name
+-   course description
+-   instructor details
+-   other relevant information
+
+## Chapters Collection
+
+-   chapter name
+-   chapter description
+-   other relevant information
+
+## Videos Collection
+
+-   video name
+-   video description
+-   video URL
+-   other relevant information
+
+## Quizzes Collection
+
+-   quiz questions
+-   answer options
+-   correct answers
+
+## Games Collection
+
+-   game name
+-   game description
+-   game URL
+-   other relevant information
+
+## Books Collection
+
+-   book name
+-   book description
+-   book URL
+-   other relevant information
+
+## Progress Collection
+
+-   completed chapters and videos
+-   taken quizzes
+-   played games
+-   read books
+
+## State Codes Collection
+
+-   code name
+-   code description
+-   other relevant information
