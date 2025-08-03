@@ -1,3 +1,10 @@
+import Link from 'next/link';
+
 export default function Home() {
-	return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <main style={{ padding: '1rem' }}>
+      <h1>Welcome to the Academy</h1>
+      <Link href="/courses">Browse Courses</Link>
+    </main>
+  );
 }
