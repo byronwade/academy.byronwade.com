@@ -1,3 +1,4 @@
+"use client";
 import { Box, Heading, Progress, Text, VStack } from '@chakra-ui/react';
 import { courses } from '@/data/courses';
 

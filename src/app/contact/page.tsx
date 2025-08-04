@@ -1,3 +1,4 @@
+"use client";
 import { Box, Heading, Text, Link } from '@chakra-ui/react';
 
 export default function ContactPage() {
