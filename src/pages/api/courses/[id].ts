@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { courses } from '@/data/courses';
+import { courses, Course } from '@/data/courses';
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse<Course | { message: string }>,
 ) {
   const { id } = req.query;
   const course = courses.find((c) => c.id === id);
