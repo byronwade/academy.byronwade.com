@@ -6,18 +6,20 @@ export type Course = {
 
 export const courses: Course[] = [
   {
-    id: 'intro-math',
-    title: 'Intro to Mathematics',
-    description: 'Learn basic math operations with interactive problems.',
+    id: 'osha-safety',
+    title: 'OSHA Safety Training',
+    description: 'Comply with OSHA regulations and keep your job sites safe.',
   },
   {
-    id: 'physics-basics',
-    title: 'Physics Basics',
-    description: 'Explore fundamental physics concepts like motion and energy.',
+    id: 'electrical-code',
+    title: 'Electrical Code Update',
+    description:
+      'Understand the latest National Electrical Code requirements for contractors.',
   },
   {
-    id: 'cs-fundamentals',
-    title: 'Computer Science Fundamentals',
-    description: 'Understand algorithms and data structures through puzzles.',
+    id: 'plumbing-basics',
+    title: 'Residential Plumbing Basics',
+    description:
+      'Review common plumbing systems and installation best practices.',
   },
 ];

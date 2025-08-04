@@ -1,4 +1,11 @@
-import Link from 'next/link';
+import NextLink from 'next/link';
+import {
+  Box,
+  Heading,
+  Text,
+  VStack,
+  Link as ChakraLink,
+} from '@chakra-ui/react';
 
 export type Course = {
   id: string;
@@ -18,16 +25,22 @@ async function getCourses(): Promise<Course[]> {
 export default async function CoursesPage() {
   const courses = await getCourses();
   return (
-    <main style={{ padding: '1rem' }}>
-      <h1>Courses</h1>
-      <ul>
+    <Box p={8} maxW="4xl" mx="auto">
+      <Heading mb={6}>Courses</Heading>
+      <VStack spacing={6} align="stretch">
         {courses.map((course) => (
-          <li key={course.id}>
-            <Link href={`/courses/${course.id}`}>{course.title}</Link>
-            <p>{course.description}</p>
-          </li>
+          <Box key={course.id} p={4} borderWidth="1px" rounded="md">
+            <ChakraLink
+              as={NextLink}
+              href={`/courses/${course.id}`}
+              fontWeight="bold"
+            >
+              {course.title}
+            </ChakraLink>
+            <Text>{course.description}</Text>
+          </Box>
         ))}
-      </ul>
-    </main>
+      </VStack>
+    </Box>
   );
 }
