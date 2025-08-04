@@ -2,9 +2,9 @@ import { Box, Heading, Progress, Text, VStack } from '@chakra-ui/react';
 import { courses } from '@/data/courses';
 
 const userProgress: Record<string, number> = {
-  'osha-safety': 40,
-  'electrical-code': 20,
-  'plumbing-basics': 0,
+  'plumbing-beginner': 30,
+  'hvac-ce': 10,
+  'electrical-master': 0,
 };
 
 export default function DashboardPage() {

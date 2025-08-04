@@ -6,12 +6,7 @@ import {
   VStack,
   Link as ChakraLink,
 } from '@chakra-ui/react';
-
-export type Course = {
-  id: string;
-  title: string;
-  description: string;
-};
+import type { Course } from '@/data/courses';
 
 async function getCourses(): Promise<Course[]> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000';
@@ -38,6 +33,9 @@ export default async function CoursesPage() {
               {course.title}
             </ChakraLink>
             <Text>{course.description}</Text>
+            <Text fontWeight="bold" mt={2}>
+              ${course.price.toFixed(2)}
+            </Text>
           </Box>
         ))}
       </VStack>

@@ -10,6 +10,25 @@ Join us today and start your journey to becoming a skilled contractor. With affo
 
 We want a website similar to Khan Academy where we would be an online learning platform that offers video lessons, interactive quizzes and exercises, and educational games. The website should have a clean and simple user interface with a navigation menu that is easy to use. The courses should be well-structured and organized into categories, making it easy for students to find the subjects they want to learn. The website should also have a tracking system to allow students to monitor their progress and receive feedback on their performance. Additionally, the website should have an easy-to-use discussion forum where students can engage with other students and instructors, ask questions, and receive support.
 
+# Course Offerings
+
+Our curriculum focuses on three core trades—plumbing, HVAC, and electrical. Each trade features a beginner guide, a continuing education track, and an advanced master course. Every course lists pricing and detailed descriptions, so students know exactly what they are purchasing before they enroll.
+
+- **Plumbing**
+  - *Beginner Guide*: foundational skills and tool overviews ($49)
+  - *Continuing Education*: code updates and safety refreshers ($99)
+  - *Master Course*: complex systems and leadership training ($199)
+- **HVAC**
+  - *Beginner Guide*: introduction to HVAC systems and safety ($49)
+  - *Continuing Education*: efficiency standards and troubleshooting ($99)
+  - *Master Course*: system design and project leadership ($199)
+- **Electrical**
+  - *Beginner Guide*: electrical theory and safety fundamentals ($49)
+  - *Continuing Education*: code revisions and smart technologies ($99)
+  - *Master Course*: industrial systems and management ($199)
+
+Selecting a course reveals full details, pricing, and chapter breakdowns. Interactive videos, charts, and quizzes guide learners through each chapter, and correct answers are required to progress.
+
 # Structure
 
 ## High School Students:
