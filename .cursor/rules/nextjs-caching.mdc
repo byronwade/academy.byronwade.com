@@ -1,0 +1,39 @@
+---
+alwaysApply: true  
+description: Next.js 15 Caching & Data Fetching Rules
+---
+
+# Next.js 15 Caching Strategy Rules
+
+## Cache Function Usage (Next.js 15+)
+- **ALWAYS** prefer `cache()` over `unstable_cache()`
+- **Use cache()** for expensive server-side computations:
+  ```tsx
+  import { cache } from 'react'
+  
+  const getCourseData = cache(async (id: string) => {
+    const data = await fetch(`/api/courses/${id}`)
+    return data.json()
+  })
+  ```
+
+## Data Fetching Patterns
+- **Server Actions**: Use for mutations with automatic revalidation
+- **Route Handlers**: Only for external API integrations  
+- **Direct Database Calls**: In Server Components when possible
+- **Revalidation**: Use `revalidateTag()` and `revalidatePath()` strategically
+
+## Request Deduplication
+- React automatically deduplicates identical fetch requests in Server Components
+- Use `cache()` wrapper for non-fetch async operations
+- **Avoid** manual request deduplication - let React handle it
+
+## Static vs Dynamic Routes
+- **Static by default**: Use `generateStaticParams()` for known dynamic routes
+- **ISR (Incremental Static Regeneration)**: Use `revalidate` export for timed updates
+- **Dynamic**: Only when content is truly user-specific
+
+## Cache Invalidation Strategy
+- Use descriptive cache tags for granular invalidation
+- Implement cache warming for critical paths
+- Monitor cache hit rates and adjust strategies accordingly

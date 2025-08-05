@@ -1,0 +1,124 @@
+---
+alwaysApply: true
+description: Advanced Next.js 15 & Vercel Features
+---
+
+# Advanced Next.js 15 & Vercel Features
+
+## Partial Prerendering (PPR) - Next.js 15
+- **Enable in next.config.js** for optimal performance:
+  ```javascript
+  module.exports = {
+    experimental: {
+      ppr: true,
+      dynamicIO: true
+    }
+  }
+  ```
+- **Use with Suspense boundaries** for instant loading:
+  ```tsx
+  export default function Page() {
+    return (
+      <div>
+        <StaticHeader />
+        <Suspense fallback={<ProductsSkeleton />}>
+          <DynamicProducts />
+        </Suspense>
+      </div>
+    )
+  }
+  ```
+
+## Server Actions Best Practices
+- **ALWAYS** use Server Actions for mutations:
+  ```tsx
+  'use server'
+  
+  import { revalidateTag, revalidatePath } from 'next/cache'
+  
+  export async function updateProduct(formData: FormData) {
+    const id = formData.get('id') as string
+    
+    // Update database
+    await db.products.update(id, {
+      name: formData.get('name')
+    })
+    
+    // Revalidate cache
+    revalidateTag(`product-${id}`)
+    revalidatePath('/products')
+  }
+  ```
+
+## Edge Runtime Optimization
+- **Use Edge Runtime** for API routes when possible:
+  ```tsx
+  export const runtime = 'edge'
+  
+  export async function GET(request: Request) {
+    // Edge-optimized logic
+    return Response.json({ message: 'Hello from Edge' })
+  }
+  ```
+
+## Font Optimization with next/font
+- **ALWAYS** use next/font for web fonts:
+  ```tsx
+  import { Inter, Roboto_Mono } from 'next/font/google'
+  
+  const inter = Inter({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-inter'
+  })
+  
+  const robotoMono = Roboto_Mono({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-roboto-mono'
+  })
+  
+  export default function RootLayout({ children }) {
+    return (
+      <html className={`${inter.variable} ${robotoMono.variable}`}>
+        <body className="font-sans">{children}</body>
+      </html>
+    )
+  }
+  ```
+
+## Vercel Web Analytics & Real User Monitoring
+- **Track Core Web Vitals** automatically:
+  ```tsx
+  import { track } from '@vercel/analytics'
+  
+  function Button({ onClick }) {
+    return (
+      <button 
+        onClick={() => {
+          track('button_click', { location: 'header' })
+          onClick()
+        }}
+      >
+        Click me
+      </button>
+    )
+  }
+  ```
+
+## Dynamic Imports & Code Splitting
+- **Lazy load heavy components**:
+  ```tsx
+  import dynamic from 'next/dynamic'
+  
+  const ChartComponent = dynamic(() => import('./Chart'), {
+    loading: () => <ChartSkeleton />,
+    ssr: false // Only if component doesn't support SSR
+  })
+  
+  // Bundle splitting by condition
+  const AdminPanel = dynamic(() => 
+    import('./AdminPanel').then(mod => mod.AdminPanel), {
+    loading: () => <div>Loading admin...</div>
+  })
+  ```

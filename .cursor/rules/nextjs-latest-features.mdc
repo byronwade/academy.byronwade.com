@@ -1,0 +1,49 @@
+---
+alwaysApply: true
+description: Next.js 15 Latest Features & Patterns
+---
+
+# Next.js 15 Latest Features & Performance Patterns
+
+## Async Params Support (Next.js 15)
+- **ALWAYS** handle params as async in dynamic routes:
+  ```tsx
+  export default async function Page({ 
+    params 
+  }: { 
+    params: Promise<{ id: string }> 
+  }) {
+    const { id } = await params
+    // Use id safely here
+  }
+  ```
+
+## React 19 Integration
+- **Use React 19 features** with Next.js 15:
+  - `use()` hook for promises
+  - Form actions with automatic pending states
+  - Enhanced Suspense behavior
+  - Better hydration performance
+
+## Turbopack & Build Performance
+- **Development**: Use Turbopack for faster dev builds
+- **Production**: Leverage improved build caching
+- **Bundle analysis**: Regular bundle size monitoring
+- **Code splitting**: Automatic with app router
+
+## TypeScript 5.9+ Features
+- **Strict type checking**: Enable strictest TypeScript settings
+- **Performance**: Use latest TypeScript for better build speeds
+- **Type imports**: Use `import type` for type-only imports
+
+## Latest Performance APIs
+- **View Transitions API**: For smooth page transitions
+- **Navigation API**: For programmatic navigation
+- **Performance Observer**: Monitor real user metrics
+- **Web Vitals**: Track Core Web Vitals automatically
+
+## Advanced Caching Patterns
+- **Request memoization**: Automatic in Server Components
+- **Full Route Cache**: For static routes
+- **Router Cache**: Client-side navigation cache  
+- **Data Cache**: Fetch request caching with tags

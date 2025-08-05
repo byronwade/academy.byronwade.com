@@ -1,0 +1,45 @@
+---
+alwaysApply: true
+description: Next.js 15 Streaming & Suspense Rules  
+---
+
+# Next.js 15 Streaming & Suspense Rules
+
+## Streaming Server Components
+- **Stream expensive operations** immediately:
+  ```tsx
+  import { Suspense } from 'react'
+  
+  export default function CoursePage() {
+    return (
+      <div>
+        <CourseHeader /> {/* Fast, renders immediately */}
+        <Suspense fallback={<CourseSkeleton />}>
+          <CourseContent /> {/* Heavy data, streams when ready */}
+        </Suspense>
+      </div>
+    )
+  }
+  ```
+
+## Suspense Boundary Strategy
+- **Fine-grained boundaries**: Wrap individual slow components, not entire pages
+- **Progressive loading**: Show static content first, stream dynamic content
+- **Nested boundaries**: Use multiple levels for complex pages
+- **Fallback design**: Make fallbacks visually similar to final content
+
+## Server Actions with Streaming
+- Use Server Actions for form submissions with optimistic updates
+- Stream form validation feedback immediately  
+- **No loading states** - use optimistic UI patterns instead
+
+## Critical Streaming Rules
+- **Above-the-fold content**: Never wrap in Suspense
+- **Heavy computations**: Always wrap in Suspense with cache()
+- **User-specific data**: Stream separately from static content
+- **Error boundaries**: Implement alongside Suspense boundaries
+
+## Performance Monitoring
+- Monitor Time to First Byte (TTFB)
+- Track streaming chunk delivery times
+- Measure cumulative layout shift from progressive loading

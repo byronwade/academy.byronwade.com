@@ -1,0 +1,66 @@
+---
+alwaysApply: true
+description: Next.js 15 SEO & Metadata Performance Rules
+---
+
+# Next.js 15 SEO & Metadata Performance Rules
+
+## Metadata API (Next.js 13+)
+- **ALWAYS** use the Metadata API over next-seo for new features:
+  ```tsx
+  import type { Metadata } from 'next'
+  
+  export const metadata: Metadata = {
+    title: 'Course Title',
+    description: 'Course description...',
+    openGraph: {
+      title: 'Course Title',
+      description: 'Course description...',
+      url: 'https://academy.byronwade.com/courses/123',
+      images: ['/course-image.jpg'],
+    },
+  }
+  ```
+
+## Dynamic Metadata
+- **Use generateMetadata()** for dynamic routes:
+  ```tsx
+  export async function generateMetadata(
+    { params }: { params: { id: string } }
+  ): Promise<Metadata> {
+    const course = await getCourse(params.id)
+    return {
+      title: course.title,
+      description: course.description,
+    }
+  }
+  ```
+
+## JSON-LD Structured Data
+- **Always include JSON-LD** for educational content:
+  ```tsx
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: course.title,
+    description: course.description,
+    provider: {
+      '@type': 'Organization',
+      name: 'Byron Wade Academy',
+    },
+  }
+  
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  )
+  ```
+
+## Performance & SEO Integration
+- **Critical CSS**: Inline above-the-fold styles
+- **Font optimization**: Use next/font with preload
+- **Image SEO**: Always include alt text and proper dimensions
+- **Core Web Vitals**: Monitor LCP, FID, CLS metrics
+- **Schema markup**: Include for courses, instructors, and reviews

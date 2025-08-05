@@ -1,0 +1,84 @@
+---
+globs: next.config.js,next.config.ts,next.config.mjs
+description: Next.js Configuration Optimization Rules
+---
+
+# Next.js Configuration for Maximum Performance
+
+## Required Performance Configuration
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Enable experimental features for better performance
+  experimental: {
+    // Use Turbopack for faster development builds
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
+    // Enable partial prerendering for better performance
+    ppr: true,
+    // Better tree shaking
+    optimizePackageImports: ['@radix-ui/react-icons', 'lucide-react'],
+  },
+
+  // Image optimization
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
+  },
+
+  // Compiler optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+
+  // Bundle analyzer for monitoring
+  ...(process.env.ANALYZE === 'true' && {
+    bundleAnalyzer: {
+      enabled: true,
+    },
+  }),
+
+  // Headers for better caching
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin'
+          }
+        ]
+      }
+    ]
+  },
+}
+
+module.exports = nextConfig
+```
+
+## Performance Monitoring
+- Enable bundle analyzer in CI/CD
+- Monitor Core Web Vitals in production
+- Set up performance budgets
+- Track bundle size changes in PR reviews

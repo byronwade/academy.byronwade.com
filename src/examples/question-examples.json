@@ -1,0 +1,310 @@
+{
+  "multipleChoiceExample": {
+    "id": "mc-001",
+    "type": "multiple-choice",
+    "title": "Pipe Material Selection",
+    "description": "Select the best pipe material for underground water lines.",
+    "points": 15,
+    "difficulty": "medium",
+    "explanation": "PVC pipes are preferred for underground water lines due to their corrosion resistance, lightweight nature, and cost-effectiveness.",
+    "hints": ["Think about materials that won't corrode underground", "Consider cost and durability factors"],
+    "tags": ["plumbing", "materials", "underground"],
+    "options": [
+      {
+        "id": "option-1",
+        "text": "Galvanized steel pipe",
+        "isCorrect": false,
+        "explanation": "Galvanized steel can corrode over time when buried underground."
+      },
+      {
+        "id": "option-2", 
+        "text": "PVC (Polyvinyl chloride) pipe",
+        "isCorrect": true,
+        "explanation": "PVC is ideal for underground use due to its corrosion resistance and longevity."
+      },
+      {
+        "id": "option-3",
+        "text": "Cast iron pipe",
+        "isCorrect": false,
+        "explanation": "Cast iron is heavy and can rust when exposed to moisture underground."
+      },
+      {
+        "id": "option-4",
+        "text": "Copper pipe",
+        "isCorrect": false,
+        "explanation": "While durable, copper is more expensive and can be affected by soil conditions."
+      }
+    ],
+    "allowMultiple": false,
+    "randomizeOrder": true,
+    "timeLimit": 120
+  },
+
+  "dragDropCanvasExample": {
+    "id": "ddc-001",
+    "type": "drag-drop-canvas",
+    "title": "Circuit Component Placement", 
+    "description": "Drag the electrical components to their correct positions in the circuit diagram.",
+    "points": 25,
+    "difficulty": "hard",
+    "explanation": "Proper component placement follows electrical flow: power source → switch → load → ground.",
+    "canvas": {
+      "width": 600,
+      "height": 400,
+      "backgroundImage": "/images/circuit-background.png",
+      "gridSize": 20
+    },
+    "draggableItems": [
+      {
+        "id": "battery",
+        "content": "Battery",
+        "type": "image",
+        "src": "/images/battery-icon.png"
+      },
+      {
+        "id": "switch",
+        "content": "Switch", 
+        "type": "image",
+        "src": "/images/switch-icon.png"
+      },
+      {
+        "id": "resistor",
+        "content": "Resistor",
+        "type": "image", 
+        "src": "/images/resistor-icon.png"
+      },
+      {
+        "id": "led",
+        "content": "LED",
+        "type": "image",
+        "src": "/images/led-icon.png"
+      }
+    ],
+    "dropZones": [
+      {
+        "id": "power-source",
+        "x": 50,
+        "y": 100,
+        "width": 80,
+        "height": 60,
+        "acceptsItems": ["battery"],
+        "label": "Power Source"
+      },
+      {
+        "id": "control",
+        "x": 200,
+        "y": 100, 
+        "width": 80,
+        "height": 60,
+        "acceptsItems": ["switch"],
+        "label": "Control"
+      },
+      {
+        "id": "load-1",
+        "x": 350,
+        "y": 100,
+        "width": 80,
+        "height": 60,
+        "acceptsItems": ["resistor", "led"],
+        "label": "Load"
+      },
+      {
+        "id": "load-2", 
+        "x": 500,
+        "y": 100,
+        "width": 80,
+        "height": 60,
+        "acceptsItems": ["resistor", "led"],
+        "label": "Load"
+      }
+    ],
+    "correctPlacements": [
+      {"itemId": "battery", "zoneId": "power-source"},
+      {"itemId": "switch", "zoneId": "control"},
+      {"itemId": "resistor", "zoneId": "load-1"},
+      {"itemId": "led", "zoneId": "load-2"}
+    ]
+  },
+
+  "sliderRangeExample": {
+    "id": "sr-001", 
+    "type": "slider-range",
+    "title": "Water Pressure Setting",
+    "description": "Set the correct water pressure for a residential plumbing system.",
+    "points": 10,
+    "difficulty": "easy",
+    "explanation": "Residential water pressure should typically be between 40-60 PSI, with 50 PSI being optimal for most homes.",
+    "hints": ["Consider what pressure is comfortable for showers and appliances"],
+    "slider": {
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "PSI",
+      "correctValue": 50,
+      "tolerance": 5
+    }
+  },
+
+  "textInputExample": {
+    "id": "ti-001",
+    "type": "text-input", 
+    "title": "Tool Identification",
+    "description": "What is the name of the tool used to cut copper pipes cleanly?",
+    "points": 5,
+    "difficulty": "easy",
+    "explanation": "A pipe cutter provides clean, straight cuts in copper pipes without the burrs that hacksaws can create.",
+    "placeholder": "Enter the tool name...",
+    "maxLength": 50,
+    "validation": {
+      "correctAnswer": "pipe cutter",
+      "caseSensitive": false,
+      "acceptableVariations": ["tube cutter", "copper pipe cutter", "tubing cutter"],
+      "partialCredit": true
+    },
+    "hints": ["This tool has a cutting wheel that rotates around the pipe"]
+  },
+
+  "fillInBlankExample": {
+    "id": "fib-001",
+    "type": "fill-in-blank",
+    "title": "Code Requirements",
+    "description": "Complete the sentence about electrical code requirements.",
+    "points": 15,
+    "difficulty": "medium", 
+    "explanation": "GFCI protection is required in wet areas to prevent electrical shock, and AFCI protection prevents electrical fires from arc faults.",
+    "template": "In residential bathrooms, outlets must be protected by {{blank1}} devices, while bedrooms require {{blank2}} protection for fire safety.",
+    "blanks": [
+      {
+        "id": "blank1",
+        "correctAnswers": ["GFCI", "Ground Fault Circuit Interrupter"],
+        "placeholder": "Protection type..."
+      },
+      {
+        "id": "blank2", 
+        "correctAnswers": ["AFCI", "Arc Fault Circuit Interrupter"],
+        "placeholder": "Protection type..."
+      }
+    ]
+  },
+
+  "essayExample": {
+    "id": "essay-001",
+    "type": "essay",
+    "title": "Safety Procedures",
+    "description": "Describe the proper safety procedures when working with electrical circuits.",
+    "points": 30,
+    "difficulty": "hard",
+    "explanation": "Comprehensive electrical safety includes proper PPE, lockout/tagout procedures, and voltage testing.",
+    "minWords": 100,
+    "maxWords": 500,
+    "rubric": [
+      {
+        "criteria": "PPE mentioned",
+        "points": 5,
+        "description": "Student mentions appropriate personal protective equipment"
+      },
+      {
+        "criteria": "Lockout/Tagout",
+        "points": 10, 
+        "description": "Student describes proper lockout/tagout procedures"
+      },
+      {
+        "criteria": "Voltage testing",
+        "points": 10,
+        "description": "Student mentions importance of testing circuits before work"
+      },
+      {
+        "criteria": "Writing quality",
+        "points": 5,
+        "description": "Clear, organized writing with proper grammar"
+      }
+    ],
+    "sampleAnswer": "Electrical safety requires multiple layers of protection. First, always wear appropriate PPE including insulated gloves, safety glasses, and non-conductive footwear..."
+  },
+
+  "imageHotspotExample": {
+    "id": "ih-001",
+    "type": "image-hotspot",
+    "title": "HVAC Component Identification",
+    "description": "Click on the evaporator coil in this HVAC system diagram.",
+    "points": 10,
+    "difficulty": "medium",
+    "explanation": "The evaporator coil is located inside the building and is where refrigerant absorbs heat from indoor air.",
+    "image": {
+      "src": "/images/hvac-system-diagram.png",
+      "width": 800,
+      "height": 600,
+      "alt": "HVAC system diagram showing various components"
+    },
+    "hotspots": [
+      {
+        "id": "evaporator",
+        "x": 200,
+        "y": 150,
+        "radius": 30,
+        "isCorrect": true,
+        "feedback": "Correct! This is the evaporator coil where refrigerant absorbs heat."
+      },
+      {
+        "id": "condenser",
+        "x": 600,
+        "y": 150, 
+        "radius": 30,
+        "isCorrect": false,
+        "feedback": "This is the condenser coil, located outside the building."
+      },
+      {
+        "id": "compressor",
+        "x": 650,
+        "y": 300,
+        "radius": 25,
+        "isCorrect": false,
+        "feedback": "This is the compressor, which circulates refrigerant."
+      }
+    ],
+    "maxSelections": 1
+  },
+
+  "timelineBuilderExample": {
+    "id": "tb-001",
+    "type": "timeline-builder",
+    "title": "Construction Sequence",
+    "description": "Arrange the construction phases in the correct chronological order.",
+    "points": 20,
+    "difficulty": "medium",
+    "explanation": "Construction follows a logical sequence: foundation, framing, systems (plumbing/electrical), insulation, drywall, then finishing.",
+    "events": [
+      {
+        "id": "foundation",
+        "title": "Pour Foundation",
+        "description": "Excavate and pour concrete foundation"
+      },
+      {
+        "id": "framing", 
+        "title": "Frame Walls",
+        "description": "Install wall framing and roof structure"
+      },
+      {
+        "id": "plumbing",
+        "title": "Rough Plumbing", 
+        "description": "Install water and waste lines"
+      },
+      {
+        "id": "electrical",
+        "title": "Rough Electrical",
+        "description": "Install electrical wiring and boxes"
+      },
+      {
+        "id": "insulation",
+        "title": "Install Insulation",
+        "description": "Add thermal insulation to walls"
+      },
+      {
+        "id": "drywall",
+        "title": "Hang Drywall",
+        "description": "Install and finish interior walls"
+      }
+    ],
+    "correctOrder": ["foundation", "framing", "plumbing", "electrical", "insulation", "drywall"]
+  }
+}

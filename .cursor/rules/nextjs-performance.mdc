@@ -1,0 +1,44 @@
+---
+alwaysApply: true
+description: Next.js 15 Performance Optimization Rules
+---
+
+# Next.js 15 Performance & Speed First Rules
+
+## Link Component & Prefetching Strategy
+- **ALWAYS** use `next/link` with intelligent prefetching:
+  ```tsx
+  import Link from 'next/link'
+  
+  // Default hover prefetching (recommended)
+  <Link href="/courses" prefetch={true}>
+    Browse Courses
+  </Link>
+  
+  // For critical paths, use viewport prefetching
+  <Link href="/dashboard" prefetch="viewport">
+    Dashboard
+  </Link>
+  ```
+
+- **Hover Prefetching**: Next.js 15 automatically prefetches on hover with `prefetch={true}` (default)
+- **Viewport Prefetching**: Use `prefetch="viewport"` for links likely to be clicked
+- **Never** use `prefetch={false}` unless absolutely necessary for large pages
+
+## Server Components First
+- **Default to Server Components** - only add `"use client"` when absolutely necessary
+- **Stream Heavy Content**: Use Suspense boundaries for slow-loading content
+- **Parallel Data Fetching**: Use Promise.all() for multiple API calls
+
+## No Loading Screens Philosophy  
+- **Replace loading screens** with:
+  - Skeleton components that match final content layout
+  - Progressive content loading with Suspense
+  - Optimistic UI updates
+  - Streaming server components
+
+## Critical Performance Rules
+- **Bundle Size**: Keep client-side bundles minimal
+- **Route Segments**: Use loading.tsx files for instant navigation feedback  
+- **Static Optimization**: Use generateStaticParams for dynamic routes
+- **Image Optimization**: Always use next/image with proper sizing

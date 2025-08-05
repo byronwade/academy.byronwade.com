@@ -1,0 +1,153 @@
+---
+alwaysApply: true
+description: Vercel Platform Optimization Rules
+---
+
+# Vercel Platform Optimization
+
+## Next.js Configuration for Vercel
+- **Optimal next.config.js** for Vercel deployment:
+  ```javascript
+  /** @type {import('next').NextConfig} */
+  module.exports = {
+    // Turbopack for development
+    experimental: {
+      turbo: {},
+      ppr: true, // Partial Prerendering
+      dynamicIO: true,
+      optimizePackageImports: [
+        '@radix-ui/react-icons',
+        'lucide-react',
+        '@vercel/analytics'
+      ]
+    },
+    
+    // Image optimization for Vercel CDN
+    images: {
+      formats: ['image/avif', 'image/webp'],
+      deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+      imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+      minimumCacheTTL: 31536000, // 1 year
+      dangerouslyAllowSVG: false,
+      contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
+    },
+    
+    // Bundle optimization
+    compiler: {
+      removeConsole: process.env.NODE_ENV === 'production'
+    },
+    
+    // Performance headers
+    async headers() {
+      return [
+        {
+          source: '/(.*)',
+          headers: [
+            {
+              key: 'X-DNS-Prefetch-Control',
+              value: 'on'
+            },
+            {
+              key: 'Strict-Transport-Security',
+              value: 'max-age=63072000; includeSubDomains; preload'
+            }
+          ]
+        }
+      ]
+    }
+  }
+  ```
+
+## Environment Variables Best Practices
+- **Use Vercel-specific environment variables**:
+  ```tsx
+  // Use VERCEL_URL for dynamic URLs
+  const baseUrl = process.env.VERCEL_URL 
+    ? `https://${process.env.VERCEL_URL}`
+    : 'http://localhost:3000'
+  
+  // Environment-specific configuration
+  const config = {
+    development: {
+      apiUrl: 'http://localhost:3001'
+    },
+    preview: {
+      apiUrl: process.env.PREVIEW_API_URL
+    },
+    production: {
+      apiUrl: process.env.PRODUCTION_API_URL
+    }
+  }[process.env.VERCEL_ENV || 'development']
+  ```
+
+## Vercel Functions Optimization
+- **Edge Functions** for global performance:
+  ```tsx
+  // middleware.ts
+  import { NextResponse } from 'next/server'
+  import type { NextRequest } from 'next/server'
+  
+  export function middleware(request: NextRequest) {
+    // A/B testing with Vercel
+    const bucket = request.nextUrl.searchParams.get('bucket')
+    
+    if (bucket === 'b') {
+      return NextResponse.rewrite(new URL('/variant-b', request.url))
+    }
+    
+    return NextResponse.next()
+  }
+  
+  export const config = {
+    matcher: ['/products/:path*', '/dashboard/:path*']
+  }
+  ```
+
+## Vercel Caching Strategy
+- **Leverage Vercel's CDN caching**:
+  ```tsx
+  // API route with caching
+  export async function GET() {
+    const data = await fetchExpensiveData()
+    
+    return Response.json(data, {
+      headers: {
+        'Cache-Control': 's-maxage=3600, stale-while-revalidate=86400'
+      }
+    })
+  }
+  
+  // ISR with on-demand revalidation
+  export const revalidate = 3600 // 1 hour
+  
+  export default async function Page() {
+    const data = await fetch('/api/data', {
+      next: { tags: ['products'] }
+    })
+    
+    return <ProductList data={data} />
+  }
+  ```
+
+## Deployment & Preview Optimization
+- **Configure deployment settings**:
+  ```json
+  // vercel.json
+  {
+    "buildCommand": "npm run build",
+    "outputDirectory": ".next",
+    "framework": "nextjs",
+    "functions": {
+      "app/api/**/*.ts": {
+        "maxDuration": 30
+      }
+    },
+    "redirects": [
+      {
+        "source": "/old-page",
+        "destination": "/new-page",
+        "permanent": true
+      }
+    ]
+  }
+  ```
